@@ -4,21 +4,15 @@ public:
         int l=0,r=s.length()-1;
         while(l<r)
         {
-            if(isalnum(s[l])&&isalnum(s[r]))
-            {
-                if(tolower(s[l])==tolower(s[r]))
-                {
-                    l++;
-                    r--;
-                }
-                else
-                return false;
-            }
+            if(!isalnum(s[l]))
+                l++;
+            else if(!isalnum(s[r]))
+                r--;
             else
             {
-                if(!iswalnum(s[l]))
+                if(tolower(s[l])!=tolower(s[r]))
+                return false;
                 l++;
-                if(!iswalnum(s[r]))
                 r--;
             }
         }
