@@ -5,18 +5,15 @@ public:
         vector<int>res;
         while(l<r)
         {
-            if(numbers[l]+numbers[r]==target)
-            {
-                res.push_back(l+1);
-                res.push_back(r+1);
-                return res;
-            }
+            if(numbers[l]<target-numbers[r])
+                l++;
+            else if(numbers[r]>target-numbers[l])
+                r--;
             else
             {
-                if(numbers[l]<target-numbers[r])
-                l++;
-                if(numbers[r]>target-numbers[l])
-                r--;
+                  res.push_back(l+1);
+                res.push_back(r+1);
+                return res;
                 
             }
         }
