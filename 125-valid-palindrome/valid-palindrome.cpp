@@ -1,24 +1,27 @@
 class Solution {
 public:
     bool isPalindrome(string s) {
-        vector<char>str;
-        set<char>num={0,1,2,3,4,5,6,7,8,9};
-        for(auto x:s)
+        int l=0,r=s.length()-1;
+        while(l<r)
         {
-            if(iswalnum(x))
+            if(iswalnum(s[l])&&iswalnum(s[r]))
             {
-                if(x>=65&&x<=90)
-                str.push_back(x+32);
+                if(tolower(s[l])==tolower(s[r]))
+                {
+                    l++;
+                    r--;
+                }
                 else
-                str.push_back(x);
+                return false;
             }
-            
-            
+            else
+            {
+                if(!iswalnum(s[l]))
+                l++;
+                if(!iswalnum(s[r]))
+                r--;
+            }
         }
-        vector<char>str1(str.rbegin(),str.rend());
-        if(str==str1)
         return true;
-        else
-        return false;
     }
 };
