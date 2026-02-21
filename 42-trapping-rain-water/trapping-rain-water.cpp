@@ -5,24 +5,20 @@ public:
             return 0;
         }
 
-        stack<int> stk;
+        int l = 0, r = height.size() - 1;
+        int leftMax = height[l], rightMax = height[r];
         int res = 0;
-
-        for (int i = 0; i < height.size(); i++) {
-            while (!stk.empty() && height[i] >= height[stk.top()]) {
-                int mid = height[stk.top()];
-                stk.pop();
-                if (!stk.empty()) {
-                    int right = height[i];
-                    int left = height[stk.top()];
-                    int h = min(right, left) - mid;
-                    int w = i - stk.top() - 1;
-                    res += h * w;
-                }
+        while (l < r) {
+            if (leftMax < rightMax) {
+                l++;
+                leftMax = max(leftMax, height[l]);
+                res += leftMax - height[l];
+            } else {
+                r--;
+                rightMax = max(rightMax, height[r]);
+                res += rightMax - height[r];
             }
-            stk.push(i);
         }
-
         return res;
     }
 };
