@@ -2,11 +2,8 @@ class Solution {
 public:
     int longestConsecutive(vector<int>& nums) {
         int res=0;
-        set<int>numSet;
-        for(auto x:nums)
-        {
-            numSet.insert(x);
-        }
+        set<int>numSet(nums.begin(),nums.end());
+       
         int longest=0;
         int length=0;
         for(int num:numSet)
@@ -19,8 +16,7 @@ public:
                 {
                     length++;
                 }
-                if(length>longest)
-                longest=length;
+                longest=max(length,longest);
             }
         }
         return longest;
