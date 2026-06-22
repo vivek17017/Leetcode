@@ -1,6 +1,8 @@
 class Solution {
 public:
     int maxNumberOfBalloons(string text) {
+        if(text.length()<7)
+        return 0;
         map<char,int>m;
         for(int i=0;i<text.length();i++)
         {
